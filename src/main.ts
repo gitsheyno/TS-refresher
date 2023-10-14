@@ -89,3 +89,53 @@ enum Grade {
   B,
   A,
 }
+
+//-----------------------------------------<< Function >>-----------------------------------------
+
+// type allias
+
+type stringOrNumber = string | number;
+
+type stringOrNumberArray = (string | number)[];
+
+type Artist = {
+  name?: string;
+  active: boolean;
+  alboum: stringOrNumberArray;
+};
+
+type userId = stringOrNumber;
+
+//literal types
+
+let myName2 = "Shayan";
+
+const add = (a: number, b: number): number => {
+  return a + b;
+};
+
+const sayHello = (message: any): void => {
+  console.log(message);
+};
+
+// type mathFunction = (a: number, b: number) => number;
+interface mathFunction {
+  (a: number, b: number): number;
+}
+
+let multiply: mathFunction = function (a, b) {
+  return a + b;
+};
+
+const addAll = (a: number, b: number, c?: number): number => {
+  if (typeof c !== "undefined") return a + b + c;
+  return a + b;
+};
+
+const sumAll = (a: number, b: number, c: number = 2): number => {
+  return a + b + c;
+};
+
+const total = (...nums: number[]): number => {
+  return nums.reduce((num, acc) => num + acc, 0);
+};

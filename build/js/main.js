@@ -61,3 +61,25 @@ var Grade;
     Grade[Grade["B"] = 3] = "B";
     Grade[Grade["A"] = 4] = "A";
 })(Grade || (Grade = {}));
+//literal types
+let myName2 = "Shayan";
+const add = (a, b) => {
+    return a + b;
+};
+const sayHello = (message) => {
+    console.log(message);
+};
+let multiply = function (a, b) {
+    return a + b;
+};
+const addAll = (a, b, c) => {
+    if (typeof c !== "undefined")
+        return a + b + c;
+    return a + b;
+};
+const sumAll = (a, b, c = 2) => {
+    return a + b + c;
+};
+const total = (...nums) => {
+    return nums.reduce((num, acc) => num + acc, 0);
+};
