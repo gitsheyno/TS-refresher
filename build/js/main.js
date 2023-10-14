@@ -1,4 +1,5 @@
 "use strict";
+// -----------------------------------------<< Basic types >>-----------------------------------------
 let myName = "Shayan";
 let meaningOFLife;
 let isLoading;
@@ -13,3 +14,50 @@ const sum = (a, b) => {
 let postId;
 let isActive;
 let re = /\w+/g;
+//-----------------------------------------<< arrays >>-----------------------------------------
+let stringAr = ["shayan", "amir", "abas"];
+let guitars = ["strat", 5150];
+let mixedData = ["ABC", true, 2123];
+stringAr[0] = "john";
+guitars[0] = 2023;
+let test = [];
+let bands = [];
+bands[0] = "shayan";
+//-----------------------------------------<< tuple >>-----------------------------------------
+let myTuple = ["Dave", 27, true];
+let mixed = ["john", 1, false];
+myTuple[1] = 23;
+//-----------------------------------------<< Object >>-----------------------------------------
+let myObj;
+const exampleObj = {
+    prop1: "shayan",
+    prop2: true,
+};
+exampleObj.prop2 = false;
+let evh = {
+    name: "shayan",
+    active: true,
+    alboum: [2000, 20001, "hallo"],
+};
+let obj2 = {
+    name: "asghar",
+    active: false,
+};
+console.log(obj2);
+// const greetGuitarist = (guitarist: Guitarist) => {
+//   return `hello ${guitarist.name}`;
+// };
+const greetGuitarist = (guitarist) => {
+    var _a;
+    return `hello ${(_a = guitarist.name) === null || _a === void 0 ? void 0 : _a.toUpperCase()}`;
+};
+console.log(greetGuitarist(obj2));
+//-----------------------------------------<< Enum >>-----------------------------------------
+var Grade;
+(function (Grade) {
+    Grade[Grade["U"] = 0] = "U";
+    Grade[Grade["D"] = 1] = "D";
+    Grade[Grade["C"] = 2] = "C";
+    Grade[Grade["B"] = 3] = "B";
+    Grade[Grade["A"] = 4] = "A";
+})(Grade || (Grade = {}));
