@@ -139,3 +139,42 @@ const sumAll = (a: number, b: number, c: number = 2): number => {
 const total = (...nums: number[]): number => {
   return nums.reduce((num, acc) => num + acc, 0);
 };
+
+//-----------------------------------------<< Type assertion >>-----------------------------------------
+
+type One = string;
+type Two = string | number;
+type Three = "hello";
+
+let a: One = "hello";
+console.log(a);
+let b = a as Two;
+console.log(b, a);
+let c = a as Three;
+console.log(c, a);
+
+let d = <One>"World";
+console.log(d);
+
+const addOrConcat = (
+  a: number,
+  b: number,
+  c: "add" | "concat"
+): number | string => {
+  if (c === "add") {
+    return a + b;
+  }
+
+  return "" + a + b;
+};
+
+let myVal: string = addOrConcat(1, 2, "concat") as string;
+let nextVal: number = addOrConcat(1, 2, "add") as number;
+
+//-----------------------------------------<< DOM >>-----------------------------------------
+
+const img = document.querySelector("img")!;
+const myImg = document.getElementById("#img") as HTMLImageElement;
+
+// img.src;
+// myImg.src;

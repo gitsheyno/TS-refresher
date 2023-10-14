@@ -83,3 +83,24 @@ const sumAll = (a, b, c = 2) => {
 const total = (...nums) => {
     return nums.reduce((num, acc) => num + acc, 0);
 };
+let a = "hello";
+console.log(a);
+let b = a;
+console.log(b, a);
+let c = a;
+console.log(c, a);
+let d = "World";
+console.log(d);
+const addOrConcat = (a, b, c) => {
+    if (c === "add") {
+        return a + b;
+    }
+    return "" + a + b;
+};
+let myVal = addOrConcat(1, 2, "concat");
+let nextVal = addOrConcat(1, 2, "add");
+//-----------------------------------------<< DOM >>-----------------------------------------
+const img = document.querySelector("img");
+const myImg = document.getElementById("#img");
+// img.src;
+// myImg.src;
