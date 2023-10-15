@@ -104,3 +104,89 @@ const img = document.querySelector("img");
 const myImg = document.getElementById("#img");
 // img.src;
 // myImg.src;
+//-----------------------------------------<< Class >>-----------------------------------------
+class Coder {
+    constructor(name, music, age, lang = "TS") {
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang;
+        this.name = name;
+        this.music = music;
+        this.age = age;
+        this.lang = lang;
+    }
+    getAge() {
+        return `Hello,I'm ${this.age}`;
+    }
+}
+const Shayan = new Coder("shayan", "rock", 27);
+console.log(Shayan.getAge());
+// console.log(Shayan.age);
+// console.log(Shayan.lang);
+//-----------------------------------------<< Extends >>-----------------------------------------
+class WebDec extends Coder {
+    constructor(computer, name, age, music) {
+        super(name, music, age);
+        this.computer = computer;
+        this.computer = computer;
+    }
+    getLang() {
+        return `I do ${this.lang}`;
+    }
+}
+const Sara = new WebDec("mac", "sara", 30, "rap");
+console.log(Sara.getLang());
+console.log(Sara.getAge());
+class Guitrarist {
+    constructor(name, instrument) {
+        this.name = name;
+        this.instrument = instrument;
+    }
+    play(action) {
+        return `${this.name} ${action} the ${this.instrument}`;
+    }
+}
+const Page = new Guitrarist('jimmy', 'guitar');
+console.log(Page.play('strums'));
+//-----------------------------------------<< Static >>-----------------------------------------
+class Peeps {
+    static getCount() {
+        return Peeps.count;
+    }
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+        this.id = ++Peeps.count;
+    }
+}
+Peeps.count = 0;
+const John = new Peeps('john');
+const Hiba = new Peeps('hiba');
+const abas = new Peeps('abas');
+const asghar = new Peeps('asghar');
+const heshmat = new Peeps('heshmat');
+console.log(heshmat);
+console.log(Peeps);
+console.log(Peeps.count);
+console.log(Peeps.getCount());
+//-----------------------------------------<< Get Set >>-----------------------------------------
+class Bands {
+    constructor() {
+        this.dataState = [];
+    }
+    get data() {
+        return this.dataState;
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every(el => typeof el === 'string')) {
+            this.dataState = value;
+            return;
+        }
+        else
+            throw new Error('params is no an array of strings');
+    }
+}
+const MyBand = new Bands();
+MyBand.data = ['band1', 'band2'];
+console.log(MyBand.data);
