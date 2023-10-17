@@ -209,7 +209,6 @@ console.log(Shayan.getAge());
 
 //-----------------------------------------<< Extends >>-----------------------------------------
 
-
 class WebDec extends Coder {
   constructor(
     public computer: string,
@@ -239,77 +238,149 @@ interface Musician {
   play(action: string): string;
 }
 
+class Guitrarist implements Musician {
+  name: string;
+  instrument: string;
 
-class Guitrarist implements Musician{
-  name : string,
-  instrument: string; 
-
-  constructor(name : string , instrument : string){
-    this.name = name 
-    this.instrument  = instrument
+  constructor(name: string, instrument: string) {
+    this.name = name;
+    this.instrument = instrument;
   }
 
   play(action: string): string {
-    return `${this.name} ${action} the ${this.instrument}`
+    return `${this.name} ${action} the ${this.instrument}`;
   }
 }
 
-const Page = new Guitrarist ('jimmy' , 'guitar')
-console.log(Page.play('strums'))
-
+const Page = new Guitrarist("jimmy", "guitar");
+console.log(Page.play("strums"));
 
 //-----------------------------------------<< Static >>-----------------------------------------
 
-
 class Peeps {
-  static count : number = 0
+  static count: number = 0;
 
-  static getCount() : number{
-    return Peeps.count
+  static getCount(): number {
+    return Peeps.count;
   }
 
-  public id : number
+  public id: number;
 
-   constructor(public name  :string){
-    this.name = name
-    this.id = ++Peeps.count
-   }
+  constructor(public name: string) {
+    this.name = name;
+    this.id = ++Peeps.count;
+  }
 }
 
-const John = new Peeps('john')
-const Hiba = new Peeps('hiba')
-const abas = new Peeps('abas')
-const asghar = new Peeps('asghar')
-const heshmat = new Peeps('heshmat')
+const John = new Peeps("john");
+const Hiba = new Peeps("hiba");
+const abas = new Peeps("abas");
+const asghar = new Peeps("asghar");
+const heshmat = new Peeps("heshmat");
 
-console.log(heshmat)
-console.log(Peeps)
-console.log(Peeps.count)
-console.log(Peeps.getCount())
+console.log(heshmat);
+console.log(Peeps);
+console.log(Peeps.count);
+console.log(Peeps.getCount());
 
 //-----------------------------------------<< Get Set >>-----------------------------------------
 
-class Bands { 
-  private dataState : string[]
+class Bands {
+  private dataState: string[];
 
-  constructor(){
-    this.dataState = []
+  constructor() {
+    this.dataState = [];
   }
 
-  public get data() : string[]{
-    return this.dataState
+  public get data(): string[] {
+    return this.dataState;
   }
 
-  public set data(value : string[]){
-    if(Array.isArray(value) && value.every(el=>typeof el === 'string')){
-      this.dataState = value
-      return 
-    }
-    else throw new Error('params is no an array of strings')
+  public set data(value: string[]) {
+    if (Array.isArray(value) && value.every((el) => typeof el === "string")) {
+      this.dataState = value;
+      return;
+    } else throw new Error("params is no an array of strings");
   }
 }
 
-const MyBand = new Bands() 
-MyBand.data = ['band1' , 'band2']
-console.log(MyBand.data
-  )
+const MyBand = new Bands();
+MyBand.data = ["band1", "band2"];
+console.log(MyBand.data);
+
+//-----------------------------------------<< Index signiture >>-----------------------------------------
+
+interface TransactionOBj {
+  [index: string]: number;
+
+  Pizza: number;
+  Books: number;
+  Jobs: number;
+}
+// interface TransactionOBj {
+//   [index: string]: number;
+// }
+
+const todaysTransaction: TransactionOBj = {
+  Pizza: -8,
+  Books: -10,
+  Jobs: 50,
+  shayan: 100,
+};
+
+console.log(todaysTransaction.Pizza);
+console.log(todaysTransaction["Pizza"]);
+let prop: string = "Pizza";
+// console.log(todaysTransaction[prop]);
+
+const todayNEt = (transactions: TransactionOBj): number => {
+  let total: number = 0;
+  for (const transaction in transactions) {
+    total += transactions[transaction];
+  }
+
+  return total;
+};
+
+console.log(todayNEt(todaysTransaction));
+console.log(todaysTransaction["shayan"]);
+
+interface Student {
+  [key: string]: string | number | number[] | undefined;
+
+  name: string;
+  GPA: number;
+  classes?: number[];
+}
+
+const student: Student = {
+  name: "shayan",
+  GPA: 3.5,
+  classes: [7, 8, 9],
+};
+
+for (const key in student) {
+  console.log(`${key} : ${student[key]}`);
+}
+
+const logStudentsKey = (student: Student, key: keyof Student): void => {
+  console.log(`Student ${key} : ${student[key]}`);
+};
+
+// interface Inomes {
+//   [index: string]: number;
+// }
+
+type Streams = "salary" | "bonus" | "sidehustle";
+
+type Incomes = Record<Streams, number>;
+
+const todayIncome: Incomes = {
+  salary: 100,
+  bonus: 20,
+  sidehustle: 12,
+};
+
+for (const key in todayIncome) {
+  console.log(`${key} : ${todayIncome[key as keyof Incomes]}`);
+}

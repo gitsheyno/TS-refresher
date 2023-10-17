@@ -147,8 +147,8 @@ class Guitrarist {
         return `${this.name} ${action} the ${this.instrument}`;
     }
 }
-const Page = new Guitrarist('jimmy', 'guitar');
-console.log(Page.play('strums'));
+const Page = new Guitrarist("jimmy", "guitar");
+console.log(Page.play("strums"));
 //-----------------------------------------<< Static >>-----------------------------------------
 class Peeps {
     static getCount() {
@@ -161,11 +161,11 @@ class Peeps {
     }
 }
 Peeps.count = 0;
-const John = new Peeps('john');
-const Hiba = new Peeps('hiba');
-const abas = new Peeps('abas');
-const asghar = new Peeps('asghar');
-const heshmat = new Peeps('heshmat');
+const John = new Peeps("john");
+const Hiba = new Peeps("hiba");
+const abas = new Peeps("abas");
+const asghar = new Peeps("asghar");
+const heshmat = new Peeps("heshmat");
 console.log(heshmat);
 console.log(Peeps);
 console.log(Peeps.count);
@@ -179,14 +179,55 @@ class Bands {
         return this.dataState;
     }
     set data(value) {
-        if (Array.isArray(value) && value.every(el => typeof el === 'string')) {
+        if (Array.isArray(value) && value.every((el) => typeof el === "string")) {
             this.dataState = value;
             return;
         }
         else
-            throw new Error('params is no an array of strings');
+            throw new Error("params is no an array of strings");
     }
 }
 const MyBand = new Bands();
-MyBand.data = ['band1', 'band2'];
+MyBand.data = ["band1", "band2"];
 console.log(MyBand.data);
+// interface TransactionOBj {
+//   [index: string]: number;
+// }
+const todaysTransaction = {
+    Pizza: -8,
+    Books: -10,
+    Jobs: 50,
+    shayan: 100,
+};
+console.log(todaysTransaction.Pizza);
+console.log(todaysTransaction["Pizza"]);
+let prop = "Pizza";
+// console.log(todaysTransaction[prop]);
+const todayNEt = (transactions) => {
+    let total = 0;
+    for (const transaction in transactions) {
+        total += transactions[transaction];
+    }
+    return total;
+};
+console.log(todayNEt(todaysTransaction));
+console.log(todaysTransaction["shayan"]);
+const student = {
+    name: "shayan",
+    GPA: 3.5,
+    classes: [7, 8, 9],
+};
+for (const key in student) {
+    console.log(`${key} : ${student[key]}`);
+}
+const logStudentsKey = (student, key) => {
+    console.log(`Student ${key} : ${student[key]}`);
+};
+const todayIncome = {
+    salary: 100,
+    bonus: 20,
+    sidehustle: 12,
+};
+for (const key in todayIncome) {
+    console.log(`${key} : ${todayIncome[key]}`);
+}
